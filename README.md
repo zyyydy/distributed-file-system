@@ -17,7 +17,7 @@ The goal of part 1 is to generate an RPC service that will perform the following
 
 The client should be able to request each of the operations described above for binary and text-based files. The server will respond to those requests using the gRPC service methods you specify in your proto buffer definition file. Finally, the client should recognize when the server has timed out. 
 
-Here are the high-level sequence digagram[docs/part1-sequence.pdf] and class diagram[docs/part1-class-diagram.jpg]
+Here are the high-level sequence digagram[docs/part1-sequence.pdf](docs/part1-sequence.pdf) and class diagram[docs/part1-class-diagram.jpg](docs/part1-class-diagram.jpg)
 
 
 To run the code:
@@ -25,16 +25,18 @@ To run the code:
 make protos
 make
 ```
+Test 1:
 ```
-Test 1 
 ./bin/dfs-server-p1
 ./bin/dfs-client-p1 fetch gt-klaus.jpg
-
+```
 Test 2
+```
 ./bin/dfs-server-p1
 ./bin/dfs-client-p1 delete gt-klaus.jpg
-
+```
 Test 3
+```
 ./bin/dfs-server-p1
 ./bin/dfs-client-p1 store gt-klaus.jpg
 ```
