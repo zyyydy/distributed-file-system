@@ -41,7 +41,7 @@ Test 3
 ./bin/dfs-client-p1 store gt-klaus.jpg
 ```
 
-Part 2: Completing the Distributed File System (DFS)
+## Part 2: Completing the Distributed File System (DFS)
 The goal of part 2 is to complete a rudimentary DFS. It applies a weakly consistent cache strategy to the RPC calls that are created in part1. In addition, it also make an asynchronous gRPC call to allow the server to communicate to connected clients whenever a change is registered in the service.
 
 Below are expectation of part 2: 
