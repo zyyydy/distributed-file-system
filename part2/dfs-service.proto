@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package dfs_service;
+
+import "google/protobuf/timestamp.proto";
+
+service DFSService {
+
+    // Add your service calls here
+
+    // 1. REQUIRED (Parts 1 & 2): A method to store files on the server
+    rpc StoreFile(stream FileBytes) returns (FileReply);
+
+    // 2. REQUIRED (Parts 1 & 2): A method to fetch files from the server
+    rpc FetchFile (File) returns (stream FileBytes);
+
+    // 3. REQUIRED (Parts 1 & 2): A method to list all files on the server
+    rpc ListAllFiles (Empty) returns (Files);
+
+    // 4. REQUIRED (Parts 1 & 2): A method to get the status of a file on the server
+    rpc GetFileStatus(File) returns (FileStatus);
+
+    // 5. REQUIRED (Part 2 only): A method to request a write lock from the server
+    rpc RequestWriteLock(File) returns (WriteLock);
+
+    // 6. REQUIRED (Part 2 only): A method named CallbackList to handle asynchronous file listing requests
+    //                            from a client. This method should return a listing of files along with their
+    //                            attribute information. The expected attribute information should include name,
+    //                            size, modified time, and creation time.
+    rpc CallbackList(File) returns (Files);
+
+    // 7. REQUIRED (Part 2 only): A method to delete a file from the server
+    rpc DeleteFile (File) returns (FileReply);
+
+    // 8. Any other methods you deem necessary to complete the tasks of this assignment
+
+
+}
+
+// Add your message types here
+message File {
+    string name = 1;
+}
+
+message FileBytes {
+    bytes bytes_chunk = 1;
+}
+
+message Empty {
+
+}
+
+message FileReply {
+    string name = 1;
+    google.protobuf.Timestamp time_modified = 2;
+}
+
+message Files {
+    repeated FileStatus file = 1;
+}
+
+message FileStatus {
+    string name = 1;
+    uint64 filelen = 2;
+    google.protobuf.Timestamp time_created = 3;
+    google.protobuf.Timestamp time_modified = 4;
+}
+
+message WriteLock{
+    
+}
